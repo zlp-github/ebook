@@ -1,6 +1,9 @@
 package com.zt.ebook.service;
 
 import com.zt.ebook.pojo.User;
+
+import java.util.List;
+
 /**
  * Author: zlp
  * Date: 2020-02-09 23:01
@@ -10,7 +13,7 @@ public interface UserService {
 
     Integer userRegister(User user);
 
-    User userLogin(String userName, String password);
+    List<User> userLogin(String userName, String password);
 
-    Integer alertUserInfo(User user);
+    User alertUserInfo(User user);
 }

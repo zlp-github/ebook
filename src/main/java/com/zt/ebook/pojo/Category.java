@@ -1,7 +1,9 @@
 package com.zt.ebook.pojo;
 
-import javax.persistence.*;
+import lombok.Data;
 
+import javax.persistence.*;
+@Data
 @Table(name = "t_category")
 public class Category {
     @Id

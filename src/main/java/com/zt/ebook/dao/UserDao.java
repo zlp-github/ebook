@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Author: zlp
@@ -27,10 +28,10 @@ public class UserDao {
     }
 
     //用户登录
-    public User userLogin(String userName, String password) {
+    public List<User> userLogin(String userName, String password) {
         Example example = new Example(User.class);
-        example.createCriteria().andEqualTo("username", userName).andEqualTo("password", password);
-        return (User) userMapper.selectByExample(example);
+        example.createCriteria().andEqualTo("userName", userName).andEqualTo("password", password);
+        return userMapper.selectByExample(example);
     }
 
     //修改用户信息
@@ -39,5 +40,9 @@ public class UserDao {
         return userMapper.updateByPrimaryKeySelective(user);
     }
 
+    //查找用户
+    public User findByUserId(Integer userId){
+        return  userMapper.selectByPrimaryKey(userId);
+    }
 
 }

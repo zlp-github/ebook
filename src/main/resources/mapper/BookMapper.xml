@@ -9,6 +9,7 @@
     <result column="b_name" jdbcType="VARCHAR" property="bName" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="cate_id" jdbcType="INTEGER" property="cateId" />
+    <result column="cate_name" jdbcType="VARCHAR" property="cateName" />
     <result column="b_img" jdbcType="VARCHAR" property="bImg" />
     <result column="b_price" jdbcType="DECIMAL" property="bPrice" />
     <result column="b_content" jdbcType="VARCHAR" property="bContent" />

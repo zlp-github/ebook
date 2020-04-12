@@ -9,8 +9,7 @@
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="book_id" jdbcType="INTEGER" property="bookId" />
     <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
-    <result column="p_id" jdbcType="INTEGER" property="pId" />
-    <result column="reply_user_id" jdbcType="INTEGER" property="replyUserId" />
+    <result column="comments" jdbcType="INTEGER" property="comments" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>

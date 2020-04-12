@@ -14,5 +14,6 @@
     <result column="is_admin" jdbcType="INTEGER" property="isAdmin" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="token" jdbcType="VARCHAR" property="token"/>
   </resultMap>
 </mapper>

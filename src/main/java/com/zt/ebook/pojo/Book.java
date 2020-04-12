@@ -24,6 +24,9 @@ public class Book {
     @Column(name = "cate_id")
     private Integer cateId;
 
+    @Column(name="cate_name")
+    private String cateName;
+
     @Column(name = "b_img")
     private String bImg;
 
@@ -45,7 +48,7 @@ public class Book {
     /**
      * 评论
      */
-    private String comments;
+    private Integer comments;
 
     @Column(name = "create_time")
     private Date createTime;
@@ -186,7 +189,7 @@ public class Book {
      *
      * @return comments - 评论
      */
-    public String getComments() {
+    public Integer getComments() {
         return comments;
     }
 
@@ -195,8 +198,8 @@ public class Book {
      *
      * @param comments 评论
      */
-    public void setComments(String comments) {
-        this.comments = comments == null ? null : comments.trim();
+    public void setComments(Integer comments) {
+        this.comments = comments;
     }
 
     /**
@@ -225,5 +228,13 @@ public class Book {
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getCateName() {
+        return cateName;
+    }
+
+    public void setCateName(String cateName) {
+        this.cateName = cateName == null ? null : cateName.trim();
     }
 }

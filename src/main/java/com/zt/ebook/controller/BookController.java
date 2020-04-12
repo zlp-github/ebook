@@ -1,16 +1,13 @@
 package com.zt.ebook.controller;
 
-import com.zt.ebook.common.GetDataByUrl;
 import com.zt.ebook.common.SzpJsonResult;
 import com.zt.ebook.pojo.Book;
-import com.zt.ebook.response.ContentResponse;
+import com.zt.ebook.response.bookResponse.BookChapterResponse;
 import com.zt.ebook.service.BookService;
+import com.zt.ebook.utils.GetDataByUrl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 /**
  * Author: zlp
@@ -28,25 +25,38 @@ public class BookController {
 
     //通过书名进行查找书籍
     @GetMapping("find/bookByName")
-    public SzpJsonResult<Book> findBookByName(@RequestParam(value = "bName") String name, @RequestParam(value = "pageMNumber",defaultValue = "1")
+    public SzpJsonResult<Book> findBookByName(@RequestParam(value = "Name") String name, @RequestParam(value = "pageNumber",defaultValue = "1")
             Integer pageNumber,@RequestParam(value = "pageSize",defaultValue = "5")Integer pageSize){
         return SzpJsonResult.ok(bookService.findBookByName(name,pageNumber,pageSize));
     }
 
     //通过作者名进行查找书籍
     @GetMapping("find/bookByAuthor")
-    public SzpJsonResult<Book> findBookByAuthor(@RequestParam(value = "author") String author, @RequestParam(value = "pageMNumber",defaultValue = "1")
+    public SzpJsonResult<Book> findBookByAuthor(@RequestParam(value = "author") String author, @RequestParam(value = "pageNumber",defaultValue = "1")
             Integer pageNumber,@RequestParam(value = "pageSize",defaultValue = "5")Integer pageSize){
         return SzpJsonResult.ok(bookService.findBookByAuthor(author,pageNumber,pageSize));
     }
 
-    //阅读书籍
+//    阅读书籍
     @GetMapping("read/book")
-    public SzpJsonResult<ContentResponse> readBook(@RequestParam(value = "url") String url){
+    public SzpJsonResult<BookChapterResponse> readBook(@RequestParam(value = "url") String url, @RequestParam(value = "pageNumber",defaultValue = "1")
+    Integer pageNumber, @RequestParam(value = "pageSize",defaultValue = "5")Integer pageSize){
         String data = getDataByUrl.getGetDateByUrl(url);
-        List<ContentResponse> contentResponseList = bookService.readBook(data);
-        System.out.println(contentResponseList.size());
-        return SzpJsonResult.ok(contentResponseList);
+//        String data = "src/main/java/com/zt/ebook/utils/bookFile/demo.txt";
+        BookChapterResponse bookChapterResponse = bookService.readBook(data,pageNumber,pageSize);
+        return SzpJsonResult.ok(bookChapterResponse);
     }
 
+    //获取全部书籍
+    @GetMapping("get/allBook")
+    public SzpJsonResult<Book> getAllBook(@RequestParam(value = "pageNumber",defaultValue = "1") Integer pageNumber,
+                                          @RequestParam(value = "pageSize",defaultValue = "5")Integer pageSize){
+        return SzpJsonResult.ok(bookService.getAllBooks(pageNumber,pageSize));
+    }
+
+    //添加书籍
+    @PostMapping("add/book")
+    public SzpJsonResult<Integer> insertBook(@RequestBody Book book){
+        return SzpJsonResult.ok(bookService.insertBook(book));
+    }
 }

@@ -21,17 +21,14 @@ public class Comment {
     @Column(name = "comment_content")
     private String commentContent;
 
-    @Column(name = "p_id")
-    private Integer pId;
-
-    @Column(name = "reply_user_id")
-    private Integer replyUserId;
+    private Integer comments;
 
     @Column(name = "create_time")
     private Date createTime;
 
     @Column(name = "update_time")
     private Date updateTime;
+
 
     /**
      * @return id
@@ -94,31 +91,17 @@ public class Comment {
     }
 
     /**
-     * @return p_id
+     * @return comments
      */
-    public Integer getpId() {
-        return pId;
+    public Integer getComments() {
+        return comments;
     }
 
     /**
-     * @param pId
+     * @param comments
      */
-    public void setpId(Integer pId) {
-        this.pId = pId;
-    }
-
-    /**
-     * @return reply_user_id
-     */
-    public Integer getReplyUserId() {
-        return replyUserId;
-    }
-
-    /**
-     * @param replyUserId
-     */
-    public void setReplyUserId(Integer replyUserId) {
-        this.replyUserId = replyUserId;
+    public void setComments(Integer comments) {
+        this.comments = comments;
     }
 
     /**

@@ -1,7 +1,9 @@
 package com.zt.ebook.service;
 
-import com.zt.ebook.response.BookResponse;
-import com.zt.ebook.response.ContentResponse;
+import com.zt.ebook.pojo.Book;
+import com.zt.ebook.response.bookResponse.BookChapterResponse;
+import com.zt.ebook.response.bookResponse.BookResponse;
+import com.zt.ebook.response.bookResponse.ContentResponse;
 
 import java.util.List;
 
@@ -21,5 +23,7 @@ public interface BookService {
 
     BookResponse getAllBooks(Integer pageNumber ,Integer pageSize);
 
-    List<ContentResponse> readBook(String str);
+    BookChapterResponse readBook(String str, Integer pageNumber, Integer pageSize);
+
+    Integer insertBook(Book book);
 }

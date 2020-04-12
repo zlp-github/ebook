@@ -1,10 +1,13 @@
 package com.zt.ebook.pojo;
 
+import lombok.Data;
+
 import java.util.Date;
 import javax.persistence.*;
-
+@Data
 @Table(name = "t_user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,6 +25,7 @@ public class User {
 
     private Integer sex;
 
+    private String token;
     /**
      * 0:客户，1：管理员
      */
@@ -162,5 +166,13 @@ public class User {
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
