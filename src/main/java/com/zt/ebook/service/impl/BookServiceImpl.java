@@ -153,7 +153,7 @@ public class BookServiceImpl implements BookService {
                             System.out.println(content.toString());
                         }
                     }
-                    if(contentResponseArrayList.size()==100){
+                    if(contentResponseArrayList.size()==200){
                         break;
                     }
                 }
@@ -179,5 +179,27 @@ public class BookServiceImpl implements BookService {
         book.setUpdateTime(new Date());
         book.setComments(0);
         return bookDao.insertBook(book);
+    }
+
+    @Override
+    public Book findBookById(Integer id) {
+        return bookDao.findBookById(id);
+    }
+
+    @Override
+    public List<Category> getAllCategory() {
+        return bookDao.getAllCategory();
+    }
+
+    @Override
+    public BookResponse getEveryCategoryBooks(Integer cateId, Integer pageNumber, Integer pageSize) {
+        PageHelper.startPage(pageNumber, pageSize);
+        List<Book> bookList = bookDao.getBookByCateId(cateId);
+        PageInfo<Book> bookPageInfo = new PageInfo<>(bookList);
+        BookResponse bookResponse = new BookResponse();
+        long total = bookPageInfo.getTotal();
+        bookResponse.setBookList(bookList);
+        bookResponse.setTotal(total);
+        return bookResponse;
     }
 }

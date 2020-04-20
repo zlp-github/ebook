@@ -31,8 +31,7 @@ public class GetDataByUrl {
     public String getGetDateByUrl(String url){
         String filePath = null;
         String fileName = null;
-        String data = null;
-        Integer count =0;
+        String data;
         //构造HttpClient的实例
         HttpClient httpClient = new HttpClient();
         //创建GET方法的实例
@@ -76,7 +75,7 @@ public class GetDataByUrl {
                 //写入内容
                 fw.write(data);
                 // 关闭写文件
-                Thread.sleep(100);
+                Thread.sleep(1000);
                 fw.close();
             }
         } catch (Exception e) {

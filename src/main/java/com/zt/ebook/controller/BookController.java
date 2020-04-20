@@ -2,6 +2,7 @@ package com.zt.ebook.controller;
 
 import com.zt.ebook.common.SzpJsonResult;
 import com.zt.ebook.pojo.Book;
+import com.zt.ebook.pojo.Category;
 import com.zt.ebook.response.bookResponse.BookChapterResponse;
 import com.zt.ebook.service.BookService;
 import com.zt.ebook.utils.GetDataByUrl;
@@ -58,5 +59,24 @@ public class BookController {
     @PostMapping("add/book")
     public SzpJsonResult<Integer> insertBook(@RequestBody Book book){
         return SzpJsonResult.ok(bookService.insertBook(book));
+    }
+
+    //通过id查找书籍
+    @GetMapping("find/bookById")
+    public SzpJsonResult<Book> findBookById(@RequestParam Integer id){
+        return SzpJsonResult.ok(bookService.findBookById(id));
+    }
+
+    //获取全部分类
+    @GetMapping("get/allCategory")
+    public  SzpJsonResult<Category> getAllCategory(){
+        return SzpJsonResult.ok(bookService.getAllCategory());
+    }
+
+    //获取每个分类底下的所有书籍
+    @GetMapping("get/everyCategoryByCateId")
+    public SzpJsonResult<Book> getEveryCategoryByCateId(@RequestParam Integer cateId,@RequestParam(value = "pageNumber",defaultValue = "1") Integer pageNumber,
+                                                        @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize){
+        return SzpJsonResult.ok(bookService.getEveryCategoryBooks(cateId,pageNumber,pageSize));
     }
 }

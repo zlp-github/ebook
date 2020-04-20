@@ -75,4 +75,16 @@ public class BookDao {
     public Category findCategoryById(Integer id){
         return categoryMapper.selectByPrimaryKey(id);
     }
+
+    //获取全部分类
+    public List<Category> getAllCategory(){
+        return categoryMapper.selectAll();
+    }
+
+    //通过cateId查找书籍
+    public List<Book> getBookByCateId(Integer cateId){
+        Example example = new Example(Book.class);
+        example.createCriteria().andEqualTo("cateId",cateId);
+        return bookMapper.selectByExample(example);
+    }
 }

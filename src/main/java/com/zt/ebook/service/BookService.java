@@ -1,6 +1,7 @@
 package com.zt.ebook.service;
 
 import com.zt.ebook.pojo.Book;
+import com.zt.ebook.pojo.Category;
 import com.zt.ebook.response.bookResponse.BookChapterResponse;
 import com.zt.ebook.response.bookResponse.BookResponse;
 import com.zt.ebook.response.bookResponse.ContentResponse;
@@ -26,4 +27,10 @@ public interface BookService {
     BookChapterResponse readBook(String str, Integer pageNumber, Integer pageSize);
 
     Integer insertBook(Book book);
+
+    Book findBookById(Integer id);
+
+    List<Category> getAllCategory();
+
+    BookResponse getEveryCategoryBooks(Integer cateId,Integer pageNumber,Integer pageSize);
 }
